@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './BMI.scss';
 import axios from 'axios';
 
 function BMI() {
