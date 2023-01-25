@@ -3,7 +3,17 @@ import pandas as pd
 app = Flask(__name__)
 
 def calculate_bmi(weight, height):
-    return weight / (height ** 2)
+    bmi = weight / (height ** 2)
+
+    if 18.5 <= bmi <= 24.9:
+        ideal_weight_range = "18.5 to 24.9"
+        health_risk = "Low Risk"
+    else:
+        ideal_weight_range = "Underweight or Overweight"
+        health_risk = "High Risk"
+    ideal_height_weight_ratio = bmi / (height ** 2)
+
+    return bmi, ideal_weight_range, ideal_height_weight_ratio, health_risk
 
 @app.route("/calculate-bmi", methods=["POST"])
 def calculate_bmi_endpoint():
@@ -12,13 +22,16 @@ def calculate_bmi_endpoint():
     pronouns = data["pronouns"]
     height = data["height"]
     weight = data["weight"]
-    bmi = calculate_bmi(weight, height)
+    bmi, ideal_weight_range, ideal_height_weight_ratio, health_risk = calculate_bmi(weight, height)
     response = {
         "name": name,
         "pronouns": pronouns,
         "height": height,
         "weight": weight,
-        "bmi": bmi
+        "bmi": bmi,
+        "ideal_weight_range": ideal_weight_range,
+        "ideal_height_weight_ratio": ideal_height_weight_ratio,
+        "health_risk": health_risk,
     }
     return jsonify(response)
 
