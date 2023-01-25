@@ -24,32 +24,28 @@ pip install -r requirements.txt
 ```
 3. Install the React dependencies
 ```bash
-cd client
 npm install
 ```
 
 or
 
 ```bash
-cd client
 yarn install
 ```
 
 4. Start the server
 
 ```bash
-python app.py
+python bmi_calculator.py
 ```
 
 5. Start the React development server
 ```bash
-cd client
 npm start
 ```
 or
 
 ```bash
-cd client
 yarn start
 ```
 
