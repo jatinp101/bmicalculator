@@ -1,9 +1,12 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import pandas as pd
+
 app = Flask(__name__)
+CORS(app)
 
 def calculate_bmi(weight, height):
-    bmi = weight / (height ** 2)
+    bmi = float(weight) / (float(height) ** 2)
 
     if 18.5 <= bmi <= 24.9:
         ideal_weight_range = "18.5 to 24.9"
@@ -11,7 +14,7 @@ def calculate_bmi(weight, height):
     else:
         ideal_weight_range = "Underweight or Overweight"
         health_risk = "High Risk"
-    ideal_height_weight_ratio = bmi / (height ** 2)
+    ideal_height_weight_ratio = bmi / (float(height) ** 2)
 
     return bmi, ideal_weight_range, ideal_height_weight_ratio, health_risk
 

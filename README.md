@@ -24,28 +24,32 @@ pip install -r requirements.txt
 ```
 3. Install the React dependencies
 ```bash
+cd bmi-calculator
 npm install
 ```
 
 or
 
 ```bash
+cd bmi-calculator
 yarn install
 ```
 
 4. Start the server
 
 ```bash
-python bmi_calculator.py
+python app.py
 ```
 
 5. Start the React development server
 ```bash
+cd bmi-calculator
 npm start
 ```
 or
 
 ```bash
+cd bmi-calculator
 yarn start
 ```
 
